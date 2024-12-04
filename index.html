@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Analytics Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/image-9.png" alt="NBA Logo">
+        </div>
+        <h1>NBA Analytics Hub</h1>
+        <nav>
+            <a href="#about">Introduction</a>
+            <a href="#gallery">About the Data</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#summary">Summary</a>
+        </nav>
+    </header>
+    <main>
+        <section id="about" class="section">
+            <h2>About This Project</h2>
+            <img src="images/Big-Read-Shooting-The-Shot-Behal.jpg" alt="Shot Chart">
+            <p>In professional basketball, the final moments of a game often determine its outcome, and teams 
+                are increasingly relying on data to improve their decision-making during these particular situations. 
+                Our project focuses on analyzing NBA shot data, specifically in the 4th quarter's last minute, to uncover 
+                patterns that could inform coaches' strategies and highlight player's performances. This data is crucial 
+                for optimizing game plans, identifying player impact, and showing trends in high-pressure situations. 
+                Understanding where the most successful shots are taken and by who can lead to more informed decisions 
+                on the court, whether it's selecting the right shooter or determining the best area for shot attempts. 
+                Our findings will provide valuable insights into shot efficiency and shot selection under pressure, revealing 
+                opportunities to enhance game strategies.</p>
+        </section>
+
+        <section id="data" class="section">
+            <h2>About the Data</h2>
+            <p>We will be using the NBA Shots dataset from Kaggle, with the original data being scraped off the the official NBA website. 
+                There are 26 attributes in this dataset, including two season attributes, each team’s unique ID, team name, each player’s 
+                unique ID, player name, position group, position, game data, each game’s unique ID, home team, away team, whether a shot 
+                was made or missed, shot made, description of shot type, points of the shot, court zone, side of the court, abbreviation 
+                of the side of the court, distance range of shot, x-coordinate of the shot, y-coordinate of the shoot, shot distance, 
+                quarter of the game, minutes remaining in the quarter, and seconds remaining in the quarter.
+
+                The original dataset is too big for our purposes, as it incorporates all NBA regular season shot location data from the 
+                03-04 season to the 23-24 season. The number of observations in the 23-24 season dataset is 218,701, which is still much 
+                too large. Using pandas, we were able to filter down the dataset to the last quarter of the game (51,983 observations) and 
+                to less than 1 minute of the quarter remaining, for a final total of 4,769 observations. With these, we are able to analyze 
+                late game shots specifically. 
+                
+                Our <a href="https://drive.google.com/file/d/1Ih6l6iNWEa5zh1SCnWJYScLa-7WmSKpV/view" target="_blank">final dataset is linked here</a>
+                </p>
+
+        </section>
+
+        <section id="gallery" class="section">
+            <h2>Gallery of Visualizations</h2>
+            <div class="gallery">
+                <!-- Plot 1 -->
+                <div class="plot">
+                    <iframe src="shot_types.html" width="100%" height="600px" frameborder="0"></iframe>
+                    <p>This graph displays the shooting percentage that players have on different shot types in the final minute of the game in the 2023-2024 NBA Season, as well as the 
+                        frequency with which each shot was taken. The standard jump shot was by far the most attempted shot, being taken 1359 times, but was also one of the least 
+                        successful shots only going in about 26% of the time. The driving layup was another outlier in the data, being attempted much more than any other shot type of 
+                        similar shooting percentage. It was notable that dunks were one of the most consistently successful shot types, with all dunks going in at least 69% or more of 
+                        the time.</p>
+                </div>
+        
+                <!-- Plot 2 -->
+                <div class="plot">
+                    <iframe src="shot_locations_chart.html" width="100%" height="600px" frameborder="0"></iframe>
+                    <p>This graph displays all shots taken in the last minute of NBA games in 2023-2024 and whether or not they were madeThe user is able to filter which position took 
+                        the shot using a dropdown menu. This graph shows very clearly that all players favor shoointg a 3-pointer instead of a long 2-pointer, but guards take 3-pointers 
+                        much more commonly than power forwards and centers. Centers take the vast majority of their shots from right under the basket and they make their shots at a much 
+                        higher rate than any other position. Forwards were the most versatile and tended to take shots from all over the court.</p>
+                </div>
+        
+                <!-- Plot 3 -->
+                <div class="plot">
+                    <iframe src="Late_Game_Shots_Distance_By_Percentage.html" width="100%" height="600px" frameborder="0"></iframe>
+                    <p>This graph displays all shots made in the last minute of NBA games and takes into account the shot distance and the shot percentage, based on the shot distance. 
+                        The graph shows that the most successful shots are typically in the 0-35 feet range, with a significant drop after the mid-30s. A downside of this graph is that 
+                        it doesn't indicate how many shots were attempted – this may give us strange outliers such as around 58 feet, which has a surprisingly high shot percentage. </p>
+                </div>
+        
+                <!-- Plot 4 -->
+                <div class="plot">
+                    <iframe src="distance_time.html" width="100%" height="600px" frameborder="0"></iframe>
+                    <p>This graph displays every shot taken in the last minute of a game in the 2023-2024 NBA season and whether or not the shot was made. The user can additionally 
+                        filter by how many seconds were left on the clock when the shot went in. For example, if they wanted to see all buzzer-beaters, they could only show shots made 
+                        with 0 seconds left on the clock. One interesting thing about the graph is that there is a very clearly outlined 3-point line which suggests that players will 
+                        often shoot from a little further away if it can get them behind the line. There are also many shots near the basket, and that is where the most orange is on the 
+                        chart signifying that closer shots tend to do better. Most of the super long shots are when there were 0 seconds left demonstrating that they are only taken when 
+                        teams are out of time and desparate.</p>
+                </div>
+        
+                <!-- Plot 5 -->
+                <div class="plot">
+                    <img src="Late_Game_Shots_By_Team.png" alt="Player Performance" style="width: 100%; max-width: 800px; height: auto;">
+                    <p>Player performance analysis comparing clutch moments across different games. The chart highlights the players with the highest impact in pressure situations.</p>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="summary" class="section">
+            <h2>Summary</h2>
+            <p>Overall, we found.....</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 NBA Analytics Hub | Made with ❤️ for basketball fans.</p>
+    </footer>
+</body>
+</html>
