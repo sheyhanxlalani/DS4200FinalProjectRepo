@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<script>
+    // set dimensions + margins of graph
+    const width = 600, height = 400;
+    const margin = {top: 30, bottom: 30, left: 30, right: 30};
+
+    // create svg container
+    const svg = d3.select("#my_dataviz")
+        .append("svg")
+            .attr("width", width + width.left + width.right)
+            .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+            .attr("transform",
+                  "translate(" + margin.left + "," + margin.top + ")");
+
+    // read the data
+    d3.csv("nba-late-game-shots-with-shooting-percentage.csv", function(data) {
+        
+        // add x axis
+        const x = d3.scaleLinear()
+            .domain([0, 80])
+            .range([0, width]);
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom().scale(x));
+
+        // add y axis
+        const y = d3.scaleLinear()
+            .domain([0, 80])
+            .range([height, 0]);
+        svg.append("g")
+            .call(d3.axisLeft().scale(y));
+
+        // add a tooltip div
+        var tooltip = d3.select("#my_dataviz")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px")
+
+        // function to change this tooltip when the user hovers over a point
+        var mouseover = function(d) {
+        tooltip
+          .style("opacity", 1)
+        }
+
+        var mousemove = function(d) {
+        tooltip
+          .html(d.SHOOTING_PERCENTAGE + "% of " + d.TOTAL + " shots attempted from " + d.SHOT_DISTANCE + " feet were successful.")
+          .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", (d3.mouse(this)[1]) + "px")
+        }
+
+        // function to change this tooltip when the user leaves a point
+        var mouseleave = function(d) {
+        tooltip
+          .transition()
+          .duration(200)
+          .style("opacity", 0)
+        } 
+
+        // add points
+        svg.append("g")
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.SHOT_DISTANCE); } )
+          .attr("cy", function (d) { return y(d.SHOOTING_PERCENTAGE); } )
+          .attr("r", 5)
+          .style("fill", "#f88158")
+          .style("opacity", 0.8)
+          .style("stroke", "white")
+        .on("mouseover", mouseover )
+        .on("mousemove", mousemove )
+        .on("mouseleave", mouseleave )
+    
+    })  
+    
+    </script>

@@ -1,0 +1,24 @@
+﻿Link to Webside: https://sheyhanxlalani.github.io/DS4200FinalProjectRepo/ 
+
+
+Visualization 1:
+For this visualization I decided to display shots by overall zone to show which zones are the most efficient. A bar graph was my choice of chart because it enabled easy comparison between each zone. Each zone was also color coded by the number of shots taken from the zone to see which zones had more shots taken from them.
+
+
+Visualization 2:
+We designed this visualization to showcase shot patterns in the final minute of NBA games during the 2023-2024 season, focusing on how different positions perform in critical moments. By overlaying a scatter plot of shot locations on a basketball court and using distinct colors to represent made and missed shots, we made trends easy to identify. The interactive dropdown allows users to filter by position, highlighting differences like guards favoring 3-pointers, centers dominating close-range shots, and forwards showcasing versatility. Our goal was to create an intuitive, engaging tool for exploring late-game strategies and uncovering actionable insights.
+
+
+Visualization 3:
+This visualization was created to showcase the correlation between shot distance and shooting percentage. By plotting the average shooting percentage (y-axis) of all shots taken from a specific distance (x-axis), we were able to depict a general trend. Because the shot distance provided to us were integers, I increased the radius of each point to provide a more accurate representation on the width of each point in relation to the x-axis. Because of this, I also decreased the opacity so the viewer can see the overlap between the points. 
+
+
+An issue with the original non-interactive graph was that because the averages were taken of many shots at the same distance, the “weight” of each point was not truly displayed through the visuals of the graph. For example, there are 460 shots attempted from 1 feet and only 2 attempted from the outliers of 39 feet and 58 feet, both which correlated to a 50% shooting percentage. To combat this, we added a tooltip that showcases how many total shots were attempted. With this, we can see that only 2 shots were attempted at both 39 and 59 feet during the 23-24 season, which explains why the shooting percentage at those specific points are so high. The tooltip allowed us to more accurately reflect the correlation between shot distance and shooting percentage.
+
+
+Visualization 4:
+For this visualization I wanted to make sure the points were laid out according to their axis so you could see the shape of the clusters of shots, for example: around the 3 point line. The points were coded as blue and orange so they are color-blind friendly. I thought it was important to have a slider to filter by time left because teams tend to take different shots when they get more desparate.
+
+
+Visualization 5 Explanation: 
+This visualization uses a scatter plot to show the relationship between total shots and shooting percentage by NBA teams in late-game situations. Grid lines with a light, dashed style enhance readability by helping viewers align points with axis values. Transparency  ensures overlapping points remain visible without overcrowding the visual. Team names are directly annotated near their respective points, removing the need for a separate legend and improving accessibility. The title clearly communicates the plot’s focus, while well-labeled axes clarify the measured dimensions. A large figure size ensures sufficient spacing and legibility for both data points and annotations, creating a clean and interpretable design.
